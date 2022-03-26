@@ -5,30 +5,17 @@ const mongoose = require('mongoose'),
 
 const User = new mongoose.Schema({
   // username, password
-  lists:  [{ type: mongoose.Schema.Types.ObjectId, ref: 'List' }]
+  performanceStats:  { type: mongoose.Schema.Types.ObjectId, ref: 'PerformanceStats' }
 });
 
-const Item = new mongoose.Schema({
-	name: {type: String, required: true},
-	quantity: {type: Number, min: 1, required: true},
-	checked: {type: Boolean, default: false, required: true}
-}, {
-	_id: true
+const PerformanceStats = new mongoose.Schema({
+	user: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
+	interval: [{type: String, correct: Number, total: Number}],
+	chord: [{type: String, correct: Number, total: Number}]
 });
-
-
-const List = new mongoose.Schema({
-  user: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
-  name: {type: String, required: true},
-	createdAt: {type: Date, required: true},
-	items: [Item]
-});
-
 
 User.plugin(passportLocalMongoose);
-List.plugin(URLSlugs('name'));
 
 mongoose.model('User', User);
-mongoose.model('List', List);
-mongoose.model('Item', Item);
-mongoose.connect('mongodb://localhost/grocerydb');
+mongoose.model('PerformanceStats', PerformanceStats);
+mongoose.connect('mongodb://localhost/earTrainerdb');

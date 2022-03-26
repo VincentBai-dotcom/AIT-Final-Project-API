@@ -1,28 +1,22 @@
 The content below is an example project proposal / requirements document. Replace the text below the lines marked "__TODO__" with details specific to your project. Remove the "TODO" lines.
 
-(__TODO__: your project name_)
-
-# Shoppy Shoperson 
+# Ear Trainer
 
 ## Overview
 
-(__TODO__: a brief one or two paragraph, high-level description of your project_)
+A well-trained musician can identify intervals, chords, scales, etc. just by listening to a piece of music, and good ears will be beneficial to a musician almost in all aspects. However this skill cannot be acquired without meticilous effort. 
 
-Remembering what to buy at the grocery store is waaaaay too difficult. Also, shopping for groceries when you're hungry leads to regrettable purchases. Sooo... that's where Shoppy Shoperson comes in!
-
-Shoppy Shoperson is a web app that will allow users to keep track of multiple grocery lists. Users can register and login. Once they're logged in, they can create or view their grocery list. For every list that they have, they can add items to the list or cross off items.
+This Ear Trainer is a web app that will allow users to pratice their ability to identifies intervals and chords (or more) by ear. The user will have the option to choose which set of questions they are working on, and the app will also keep track of the users' performance on each type of the question to sharpen their weakest point. 
 
 
 ## Data Model
 
 (__TODO__: a description of your application's data and their relationships to each other_) 
 
-The application will store Users, Lists and Items
+The application will store Users and PerformanceStats.
 
-* users can have multiple lists (via references)
-* each list can have multiple items (by embedding)
-
-(__TODO__: sample documents_)
+* users can have one PerformanceStats (via references)
+* each PerformanceStats can have multiple type of pratices(chords, intervals), and each type would have the number the problems answered correctly by the user and the total number of problems done by the user, as well as the stats classified by the type (by embedding)
 
 An Example User:
 
@@ -30,21 +24,35 @@ An Example User:
 {
   username: "shannonshopper",
   hash: // a password hash,
-  lists: // an array of references to List documents
+  performanceStats: // a reference to a PerformanceStats
 }
 ```
 
-An Example List with Embedded Items:
+An Example PerformanceStats
 
 ```javascript
 {
   user: // a reference to a User object
-  name: "Breakfast foods",
-  items: [
-    { name: "pancakes", quantity: "9876", checked: false},
-    { name: "ramen", quantity: "2", checked: true},
-  ],
-  createdAt: // timestamp
+  interval: [{
+    correct: 20,
+    total: 30,
+    type: "major3rd",
+  },
+  {
+    correct: 10,
+    total: 20,
+    type: "perfect4th",
+  }
+  {
+    correct: 30,
+    total: 50,
+    type: "total",
+  }],
+  chord:[{
+    correct: 0,
+    total: 0,
+    type: "total",
+  }]
 }
 ```
 
@@ -55,59 +63,73 @@ An Example List with Embedded Items:
 
 ## Wireframes
 
-(__TODO__: wireframes for all of the pages on your site; they can be as simple as photos of drawings or you can use a tool like Balsamiq, Omnigraffle, etc._)
+/ - index page that will allow user to start training and login
 
-/list/create - page for creating a new shopping list
+![list create](documentation/index.jpg)
 
-![list create](documentation/list-create.png)
+/intervalSelect - page for allows user to select which set of intervals they would like to be tested on
 
-/list - page for showing all shopping lists
+![list](documentation/intervalSelect.jpg)
 
-![list](documentation/list.png)
+/interval - page of actual training with a play button and a list of available answer
 
-/list/slug - page for showing specific shopping list
+![list](documentation/interval.jpg)
 
-![list](documentation/list-slug.png)
+/chordSelect - identical to /intervalSelect except for different set of possible answers
+
+/chord - identical to /interval expect the set of possible answers
+
+/login - page for login and signup
+
+![list](documentation/login.jpg)
+
+/stats - page to show stats 
+
+![list](documentation/stats.jpg)
+
+/stats/interval - page to show stats on interval alone. Looks similar to /stats
+
+/stats/chord - page to show stats on chord alone. Looks similar to /stats
 
 ## Site map
 
-(__TODO__: draw out a site map that shows how pages are related to each other_)
+/ - goes to /login, /chordSelect, /intervalSelect, /stats
 
-Here's a [complex example from wikipedia](https://upload.wikimedia.org/wikipedia/commons/2/20/Sitemap_google.jpg), but you can create one without the screenshots, drop shadows, etc. ... just names of pages and where they flow to.
+/login - goes to /
+
+/intervalSelect - goes to / and /interval
+
+/chordSelect - goes to / and /chord
+
+/interval - goes to /
+
+/chord - goes to /
+
+/stats - goes to /, /stats/interval, /stats/chord
+
+/stats/interval - goes to /, /stats, /stats/chord
+
+/stats/interval - goes to /, /stats, /stats/interval
 
 ## User Stories or Use Cases
 
-(__TODO__: write out how your application will be used through [user stories](http://en.wikipedia.org/wiki/User_story#Format) and / or [use cases](https://www.mongodb.com/download-center?jmp=docs&_ga=1.47552679.1838903181.1489282706#previous)_)
-
 1. as non-registered user, I can register a new account with the site
 2. as a user, I can log in to the site
-3. as a user, I can create a new grocery list
-4. as a user, I can view all of the grocery lists I've created in a single list
-5. as a user, I can add items to an existing grocery list
-6. as a user, I can cross off items in an existing grocery list
+3. as a user, I can pratice identifying chords and intervals by ear
+4. as a user, I can check the past stats of my accuracy on particular chord or interval
 
 ## Research Topics
 
-(__TODO__: the research topics that you're planning on working on along with their point values... and the total points of research topics listed_)
-
-* (5 points) Integrate user authentication
-    * I'm going to be using passport for user authentication
-    * And account has been made for testing; I'll email you the password
-    * see <code>cs.nyu.edu/~jversoza/ait-final/register</code> for register page
-    * see <code>cs.nyu.edu/~jversoza/ait-final/login</code> for login page
-* (4 points) Perform client side form validation using a JavaScript library
-    * see <code>cs.nyu.edu/~jversoza/ait-final/my-form</code>
-    * if you put in a number that's greater than 5, an error message will appear in the dom
-* (5 points) vue.js
-    * used vue.js as the frontend framework; it's a challenging library to learn, so I've assigned it 5 points
-
-10 points total out of 8 required points (___TODO__: addtional points will __not__ count for extra credit_)
-
+* (3 points) Audio
+    * i need to find a efficient method to let my application make sound to implement the function
+    * found two candidates: Web Audio API and Tone.js
+* (5 points) REST API
+    * i will build a REST API using express as a stand-alone application that serves the backend
+    * some of the challenges include authentification and performance
+* (5 points) React
+    * used React as the frontend framework; it's a challenging library to learn, so I've assigned it 5 points
 
 ## [Link to Initial Main Project File](app.js) 
-
-(__TODO__: create a skeleton Express application with a package.json, app.js, views folder, etc. ... and link to your initial app.js_)
-
 ## Annotations / References Used
 
 (__TODO__: list any tutorials/references/etc. that you've based your code off of_)
