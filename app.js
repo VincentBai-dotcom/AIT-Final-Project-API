@@ -7,8 +7,6 @@ const express = require('express');
 const path = require('path');
 
 const routes = require('./routes/index');
-const list = require('./routes/list');
-const listItem = require('./routes/list-item');
 
 const app = express();
 
@@ -39,7 +37,5 @@ app.use((req, res, next) => {
 });
 
 app.use('/', routes);
-app.use('/list', list);
-app.use('/list-item', listItem);
 
-app.listen(3000);
+app.listen(process.env.PORT || 5000);
