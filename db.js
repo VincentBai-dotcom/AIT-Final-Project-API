@@ -58,4 +58,4 @@ const uri = process.env.MONGODB_URI;
 
 mongoose.model('User', User);
 mongoose.model('PerformanceStats', PerformanceStats);
-mongoose.connect(uri | 'mongodb://localhost/earTrainerdb');
+mongoose.connect(uri || 'mongodb://localhost/earTrainerdb');

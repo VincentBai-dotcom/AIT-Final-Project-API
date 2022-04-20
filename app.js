@@ -1,4 +1,4 @@
-
+require("dotenv").config();
 require('./db');
 require('./auth');
 const morgan = require('morgan');
