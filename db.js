@@ -1,6 +1,6 @@
 const mongoose = require('mongoose'),
 	URLSlugs = require('mongoose-url-slugs'),
-  passportLocalMongoose = require('passport-local-mongoose');
+  passportLocalMongoose = require('passport-local-mongoose'),
 
 bcrypt = require('bcrypt-nodejs');  
 
@@ -20,7 +20,7 @@ const User = new mongoose.Schema({
 });
 
 User.pre('save', function (next) {
-    var user = this;
+    const user = this;
     if (this.isModified('password') || this.isNew) {
         bcrypt.genSalt(10, function (err, salt) {
             if (err) {
@@ -54,7 +54,8 @@ const PerformanceStats = new mongoose.Schema({
 	chord: [{type: String, correct: Number, total: Number}]
 });
 
+const uri = process.env.MONGODB_URI;
 
 mongoose.model('User', User);
 mongoose.model('PerformanceStats', PerformanceStats);
-mongoose.connect(process.env.MONGODB_URI | 'mongodb://localhost/earTrainerdb');
+mongoose.connect(uri | 'mongodb://localhost/earTrainerdb');
