@@ -1,5 +1,5 @@
 const JwtStrategy = require('passport-jwt').Strategy,
-    ExtractJwt = require('passport-jwt').ExtractJwt;
+    ExtractJwt = require('passport-jwt').ExtractJwt,
     mongoose = require('mongoose');
 
 // load up the user model

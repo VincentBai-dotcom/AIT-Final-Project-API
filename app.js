@@ -9,7 +9,7 @@ const express = require('express');
 const path = require('path');
 
 const routes = require('./routes/api');
-cors = require("cors");
+const cors = require("cors");
 
 
 const app = express();
