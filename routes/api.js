@@ -68,7 +68,7 @@ router.get('/login', (req, res) =>  {
   res.render('login');
 });
 
-router.get('/signup', (req, res) =>  {
+router.get('/register', (req, res) => {
  res.render('register');
 });
 
