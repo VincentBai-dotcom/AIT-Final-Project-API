@@ -1,0 +1,10 @@
+<h2>Answer this question</h2>
+<form action="" method="POST">
+<div class='form-row'><label>Your answer:</label> <input type="text" name="answer"></div>
+<div class='form-row'><input type="submit" value="submit"></div>
+</form>
+{{#if stats}}
+<p>Username: {{stats.username}}</p>
+<P>Correct: {{stats.correct}}</p>
+<P>Total: {{stats.total}}</p>
+{{/if}}

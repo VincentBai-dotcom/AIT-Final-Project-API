@@ -3,8 +3,9 @@ const express = require('express'),
     router = express.Router(),
     passport = require('passport'),
     mongoose = require('mongoose'),
-    User = mongoose.model('User');
-    jwt = require('jsonwebtoken');
+    User = mongoose.model('User'),
+    Stats = mongoose.model('PerformanceStats'),
+    jwt = require('jsonwebtoken'),
     config = require('../config/database');
 require('../config/passport')(passport);
 
@@ -64,12 +65,46 @@ router.get('/', (req, res) => {
 // });
 
 
-router.get('/login', (req, res) =>  {
+router.get('/login', (req, res) => {
   res.render('login');
 });
 
 router.get('/signup', (req, res) => {
  res.render('register');
+});
+
+router.get('/question', (req,res) =>{
+  Stats.findOne({
+    username: 'guest',
+  }, function(err,stats){
+    if(!err){
+      console.log(stats);
+      res.render('question',{stats:stats});
+    }
+    else{
+      console.log(err);
+      res.render('question');
+    }
+  });
+  
+});
+
+router.post('/question',(req,res)=>{
+  Stats.findOne({
+    username: "guest",
+  },function(err,stats){
+    if(err){
+      console.log(err);
+    }
+    else{
+      stats.total = stats.total+1;
+      if(req.body.answer === "Major Seventh"){
+        stats.correct = stats.correct+1;
+      }
+      stats.save();
+    }
+    res.redirect('/question');
+  });
 });
 
 // router.post('/register', (req, res) =>  {

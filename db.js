@@ -50,8 +50,9 @@ User.methods.comparePassword = function (passw, cb) {
 
 const PerformanceStats = new mongoose.Schema({
 	username: String,
-	interval: [{type: String, correct: Number, total: Number}],
-	chord: [{type: String, correct: Number, total: Number}]
+	type: String,
+    correct: Number,
+    total: Number,
 });
 
 const uri = process.env.MONGODB_URI;
