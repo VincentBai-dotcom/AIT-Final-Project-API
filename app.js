@@ -1,12 +1,16 @@
 
 require('./db');
 require('./auth');
+const morgan = require('morgan');
+
 
 const passport = require('passport');
 const express = require('express');
 const path = require('path');
 
-const routes = require('./routes/index');
+const routes = require('./routes/api');
+cors = require("cors");
+
 
 const app = express();
 
@@ -14,10 +18,12 @@ const app = express();
 // app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+app.use(cors());
+
 // enable sessions
 const session = require('express-session');
 const sessionOptions = {
-    secret: 'secret cookie thang (store this elsewhere!)',
+    secret: 'nodeauthsecret',
     resave: true,
       saveUninitialized: true
 };
@@ -25,6 +31,8 @@ app.use(session(sessionOptions));
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 // passport setup
 app.use(passport.initialize());

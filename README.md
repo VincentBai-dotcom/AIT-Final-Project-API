@@ -123,7 +123,7 @@ An Example PerformanceStats
 * (3 points) Audio
     * i need to find a efficient method to let my application make sound to implement the function
     * found two candidates: Web Audio API and Tone.js
-* (5 points) REST API
+* (8 points) REST API
     * i will build a REST API using express as a stand-alone application that serves the backend
     * some of the challenges include authentification and performance
 * (5 points) React
