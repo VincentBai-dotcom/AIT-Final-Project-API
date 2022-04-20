@@ -57,5 +57,4 @@ const PerformanceStats = new mongoose.Schema({
 
 mongoose.model('User', User);
 mongoose.model('PerformanceStats', PerformanceStats);
-mongoose.connect('mongodb://localhost/earTrainerdb'
-);
+mongoose.connect(process.env.MONGODB_URI | 'mongodb://localhost/earTrainerdb');
