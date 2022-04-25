@@ -13,7 +13,7 @@ const User = new mongoose.Schema({
         unique: true,
         required: true
     },
-  	password: {
+    password: {
         type: String,
         required: true
     }
@@ -48,15 +48,16 @@ User.methods.comparePassword = function (passw, cb) {
     });
 };
 
-const PerformanceStats = new mongoose.Schema({
+const UserStats = new mongoose.Schema({
 	username: String,
-	type: String,
+	type:String, 
+    quality: String, 
+    total: Number, 
     correct: Number,
-    total: Number,
 });
 
 const uri = process.env.MONGODB_URI;
 console.log(uri);
 mongoose.model('User', User);
-mongoose.model('PerformanceStats', PerformanceStats);
+mongoose.model('UserStats', UserStats);
 mongoose.connect(uri || 'mongodb://localhost/earTrainerdb');

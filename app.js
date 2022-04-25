@@ -10,7 +10,7 @@ const path = require('path');
 
 const routes = require('./routes/api');
 const cors = require("cors");
-
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -28,6 +28,8 @@ const sessionOptions = {
       saveUninitialized: true
 };
 app.use(session(sessionOptions));
+
+app.use(bodyParser.json());
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
