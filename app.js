@@ -1,6 +1,5 @@
 require("dotenv").config();
 require('./db');
-const morgan = require('morgan');
 
 
 const passport = require('passport');
