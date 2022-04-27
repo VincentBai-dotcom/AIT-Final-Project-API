@@ -50,7 +50,7 @@ router.post('/login', function(req, res) {
     }
     if (!user) {
       console.log("Start");
-      res.status(401).send({success: false, msg: 'Authentication failed. User not found.'});
+      res.status(401).send({success: false, msg: 'Authentication failed. Username not found.'});
     } else {
       // check if password matches
       user.comparePassword(req.body.password, function (err, isMatch) {
@@ -65,10 +65,6 @@ router.post('/login', function(req, res) {
       });
     }
   });
-});
-
-router.get('/', (req, res) => {
-  res.render('home');
 });
 
 router.get('/stats', passport.authenticate('jwt', { session: false}), (req,res)=>{
@@ -115,7 +111,7 @@ router.post('/stats', passport.authenticate('jwt',{session: false}), (req,res)=>
                 res.json({success: false, msg: "Saving Error"});
               }
               else{
-                res.json({success: true, msg: "Saved"});
+                res.json({success: true, msg: "Saved", stats: newstats.toJSON()});
               }
             });
         }
@@ -131,7 +127,7 @@ router.post('/stats', passport.authenticate('jwt',{session: false}), (req,res)=>
             res.json({success: false, msg: "Saving Error"});
           }
           else{
-            res.json({success: true, msg: "Saved"});
+            res.json({success: true, msg: "Saved", stats: userstats.toJSON()});
           }
         });
       }
@@ -141,72 +137,6 @@ router.post('/stats', passport.authenticate('jwt',{session: false}), (req,res)=>
     res.status(403).send({success: false, msg: 'Unauthorized.'});
   }
 });
-
-// router.get('/logout', (req, res) => {
-//   req.logout();
-//   res.redirect('/');
-// });
-
-
-router.get('/login', (req, res) => {
-  res.render('login');
-});
-
-router.get('/signup', (req, res) => {
- res.render('register');
-});
-
-router.get('/question', (req,res) =>{
-  Stats.findOne({
-    username: 'guest',
-  }, function(err,stats){
-    if(!err){
-      console.log(stats);
-      res.render('question',{stats:stats});
-    }
-    else{
-      console.log(err);
-      res.render('question');
-    }
-  });
-  
-});
-
-router.post('/question',(req,res)=>{
-  Stats.findOne({
-    username: "guest",
-  },function(err,stats){
-    if(err){
-      console.log(err);
-    }
-    else{
-      stats.total = stats.total+1;
-      if(req.body.answer === "Major Seventh"){
-        stats.correct = stats.correct+1;
-      }
-      stats.save();
-    }
-    res.redirect('/question');
-  });
-});
-
-router.get('/test', (req,res) =>{
-  res.json({sucess: true});
-});
-
-// router.post('/register', (req, res) =>  {
-//   const {username, password} = req.body;
-//   User.register(new User({username}), req.body.password, (err, user) => {
-//     if (err) {
-//       res.render('register',{message:'Your registration information is not valid'});
-//     } else {
-//       passport.authenticate('local')(req, res, function() {
-//         res.redirect('/');
-//       });
-//     }
-//   });   
-// });
-
 
 
 module.exports = router;
