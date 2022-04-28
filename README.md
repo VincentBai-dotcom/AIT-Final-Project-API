@@ -47,51 +47,33 @@ An Example PerformanceStats
 
 / - index page that will allow user to start training and login
 
-![list create](documentation/index.jpg?raw=true)
-
-/intervalSelect - page for allows user to select which set of intervals they would like to be tested on
-
-![list](documentation/intervalSelect.jpg?raw=true)
+![index](https://github.com/VincentBai-dotcom/AIT-Final-Project-API/blob/main/documentation/Index.jpg?raw=true)
 
 /interval - page of actual training with a play button and a list of available answer
 
-![list](documentation/interval.jpg?raw=true)
-
-/chordSelect - identical to /intervalSelect except for different set of possible answers
+![list](https://github.com/VincentBai-dotcom/AIT-Final-Project-API/blob/main/documentation/Interval.jpg?raw=true)
 
 /chord - identical to /interval expect the set of possible answers
 
 /login - page for login and signup
 
-![list](documentation/login.jpg?raw=true)
+![list](https://github.com/VincentBai-dotcom/AIT-Final-Project-API/blob/main/documentation/Login.jpg?raw=true)
 
 /stats - page to show stats 
 
-![list](documentation/stats.jpg?raw=true)
-
-/stats/interval - page to show stats on interval alone. Looks similar to /stats
-
-/stats/chord - page to show stats on chord alone. Looks similar to /stats
+![list](https://github.com/VincentBai-dotcom/AIT-Final-Project-API/blob/main/documentation/Stats.jpg?raw=true)
 
 ## Site map
 
-/ - goes to /login, /chordSelect, /intervalSelect, /stats
+/ - goes to /login, /chord, /interval, /stats
 
 /login - goes to /
-
-/intervalSelect - goes to / and /interval
-
-/chordSelect - goes to / and /chord
 
 /interval - goes to /
 
 /chord - goes to /
 
-/stats - goes to /, /stats/interval, /stats/chord
-
-/stats/interval - goes to /, /stats, /stats/chord
-
-/stats/interval - goes to /, /stats, /stats/interval
+/stats - goes to /
 
 ## User Stories or Use Cases
 
