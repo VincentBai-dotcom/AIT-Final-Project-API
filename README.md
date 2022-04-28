@@ -6,25 +6,23 @@ The content below is an example project proposal / requirements document. Replac
 
 A well-trained musician can identify intervals, chords, scales, etc. just by listening to a piece of music, and good ears will be beneficial to a musician almost in all aspects. However this skill cannot be acquired without meticilous effort. 
 
-This Ear Trainer is a web app that will allow users to pratice their ability to identifies intervals and chords (or more) by ear. The user will have the option to choose which set of questions they are working on, and the app will also keep track of the users' performance on each type of the question to sharpen their weakest point. 
+This Ear Trainer is a web app that will allow users to pratice their ability to identifies intervals and chords by ear. The user will able to choose to practice either intervals or chords listening, and the app will also keep track of the users' performance on each type of the quality of intervals and chords to sharpen their weakest point. 
 
 
 ## Data Model
 
 (__TODO__: a description of your application's data and their relationships to each other_) 
 
-The application will store Users and PerformanceStats.
+The application will store Users and UserStats.
 
-* users can have one PerformanceStats (via references)
-* each PerformanceStats can have multiple type of pratices(chords, intervals), and each type would have the number the problems answered correctly by the user and the total number of problems done by the user, as well as the stats classified by the type (by embedding)
-
+* users can have multiple UserStats (via references)
+* each UserStats will have one attribute called type, whose value will be either interval or chord, one attribute called quality, which marks the actual answer, and will have the number the problems answered correctly by the user and the total number of problems done by the user.
 An Example User:
 
 ```javascript
 {
   username: "shannonshopper",
   hash: // a password hash,
-  performanceStats: // a reference to a PerformanceStats
 }
 ```
 
@@ -32,27 +30,11 @@ An Example PerformanceStats
 
 ```javascript
 {
-  user: // a reference to a User object
-  interval: [{
-    correct: 20,
-    total: 30,
-    type: "major3rd",
-  },
-  {
-    correct: 10,
-    total: 20,
-    type: "perfect4th",
-  }
-  {
-    correct: 30,
-    total: 50,
-    type: "total",
-  }],
-  chord:[{
-    correct: 0,
-    total: 0,
-    type: "total",
-  }]
+  username:  "vincent",// a reference to a User object
+  type: "chord",
+  quality: "Major Seventh",
+  correct: 3,
+  total: 10
 }
 ```
 
@@ -65,7 +47,7 @@ An Example PerformanceStats
 
 / - index page that will allow user to start training and login
 
-![list create](documentation/index.jpg)
+![list create](./documentation/index.jpg)
 
 /intervalSelect - page for allows user to select which set of intervals they would like to be tested on
 
@@ -123,11 +105,12 @@ An Example PerformanceStats
 * (3 points) Audio
     * i need to find a efficient method to let my application make sound to implement the function
     * found two candidates: Web Audio API and Tone.js
-* (8 points) REST API
+* (6 points) REST API
     * i will build a REST API using express as a stand-alone application that serves the backend
-    * some of the challenges include authentification and performance
-* (5 points) React
-    * used React as the frontend framework; it's a challenging library to learn, so I've assigned it 5 points
+    * some of the challenges include authentification. I will have the backend send a json web token to the frontend, and the frontend will include this token in the request header such that the backend can authenticate with.
+* (7 points) React
+    * used React as the frontend framework; it's a challenging library to learn, so I've assigned it 7 points
+    * since React is a library, not a framework, I will also learn other libraries nessacery for development, including React Router, Axios, Tailwind CSS, etc.
 
 ## [Link to Initial Main Project File](app.js) 
 ## Annotations / References Used
