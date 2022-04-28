@@ -47,15 +47,15 @@ An Example PerformanceStats
 
 / - index page that will allow user to start training and login
 
-![list create](./documentation/index.jpg)
+![list create](documentation/index.jpg?raw=true)
 
 /intervalSelect - page for allows user to select which set of intervals they would like to be tested on
 
-![list](documentation/intervalSelect.jpg)
+![list](documentation/intervalSelect.jpg?raw=true)
 
 /interval - page of actual training with a play button and a list of available answer
 
-![list](documentation/interval.jpg)
+![list](documentation/interval.jpg?raw=true)
 
 /chordSelect - identical to /intervalSelect except for different set of possible answers
 
@@ -63,11 +63,11 @@ An Example PerformanceStats
 
 /login - page for login and signup
 
-![list](documentation/login.jpg)
+![list](documentation/login.jpg?raw=true)
 
 /stats - page to show stats 
 
-![list](documentation/stats.jpg)
+![list](documentation/stats.jpg?raw=true)
 
 /stats/interval - page to show stats on interval alone. Looks similar to /stats
 
