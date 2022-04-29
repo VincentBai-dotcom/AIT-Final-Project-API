@@ -94,11 +94,15 @@ An Example PerformanceStats
     * used React as the frontend framework; it's a challenging library to learn, so I've assigned it 7 points
     * since React is a library, not a framework, I will also learn other libraries nessacery for development, including React Router, Axios, Tailwind CSS, etc.
 
-## [Link to Initial Main Project File](app.js) 
+## [Link to Initial Main Project File (Backend)](app.js) 
+## [Link to Initial Main Project File (Frontend)]([app.js](https://github.com/VincentBai-dotcom/AIT-Final-Project-Frontend/blob/master/src/App.js)) 
 ## Annotations / References Used
 
-(__TODO__: list any tutorials/references/etc. that you've based your code off of_)
-
-1. [passport.js authentication docs](http://passportjs.org/docs) - (add link to source code that was based on this)
-2. [tutorial on vue.js](https://vuejs.org/v2/guide/) - (add link to source code that was based on this)
+1. [React router docs](https://reactrouter.com/) 
+2. [React docs](https://reactjs.org/docs/getting-started.html) 
+3. [Tone.js docs](https://tonejs.github.io/)
+4. [Tailwind CSS docs](https://tailwindcss.com/docs/guides/create-react-app)
+5. [Template codes of Tailwind CSS components](https://tailwind-elements.com/quick-start/)
+6. [Json Web Token tutorial](https://www.djamware.com/post/58eba06380aca72673af8500/node-express-mongoose-and-passportjs-rest-api-authentication)
+7. [Axios docs](https://axios-http.com/docs/intro)
 
