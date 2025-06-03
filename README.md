@@ -1,23 +1,20 @@
-The content below is an example project proposal / requirements document. Replace the text below the lines marked "__TODO__" with details specific to your project. Remove the "TODO" lines.
-
 # Ear Trainer
 
 ## Overview
 
-A well-trained musician can identify intervals, chords, scales, etc. just by listening to a piece of music, and good ears will be beneficial to a musician almost in all aspects. However this skill cannot be acquired without meticilous effort. 
+A well-trained musician can identify intervals, chords, scales, etc. just by listening to a piece of music, and good ears will be beneficial to a musician in almost all aspects. However, this skill cannot be acquired without meticulous effort.
 
-This Ear Trainer is a web app that will allow users to pratice their ability to identifies intervals and chords by ear. The user will able to choose to practice either intervals or chords listening, and the app will also keep track of the users' performance on each type of the quality of intervals and chords to sharpen their weakest point. 
+This Ear Trainer is a web app that will allow users to practice their ability to identify intervals and chords by ear. Users will be able to choose to practice either intervals or chords listening, and the app will also keep track of the users' performance on each type and quality of intervals and chords to help them sharpen their weakest points. 
 
 
 ## Data Model
 
-(__TODO__: a description of your application's data and their relationships to each other_) 
-
 The application will store Users and UserStats.
 
-* users can have multiple UserStats (via references)
-* each UserStats will have one attribute called type, whose value will be either interval or chord, one attribute called quality, which marks the actual answer, and will have the number the problems answered correctly by the user and the total number of problems done by the user.
-An Example User:
+* Users can have multiple UserStats (via references)
+* Each UserStats record has one attribute called `type` (either "interval" or "chord"), one attribute called `quality` (which marks the actual answer), and tracks the number of problems answered correctly by the user and the total number of problems attempted.
+
+### Example User:
 
 ```javascript
 {
@@ -26,7 +23,7 @@ An Example User:
 }
 ```
 
-An Example PerformanceStats
+### Example UserStats:
 
 ```javascript
 {
@@ -39,64 +36,61 @@ An Example PerformanceStats
 ```
 
 
-## [Link to Commented First Draft Schema](db.js) 
-
-(__TODO__: create a first draft of your Schemas in db.js and link to it_)
+## [Database Schema](./db.js)
 
 ## Wireframes
 
-/ - index page that will allow user to start training and login
+**/** - Index page that allows users to start training and login
 
-![index](https://github.com/VincentBai-dotcom/AIT-Final-Project-API/blob/main/documentation/Index.jpg?raw=true)
+![Index page wireframe](https://github.com/VincentBai-dotcom/AIT-Final-Project-API/blob/main/documentation/Index.jpg?raw=true)
 
-/interval - page of actual training with a play button and a list of available answer
+**/interval** - Training page with a play button and a list of available answers for interval identification
 
-![list](https://github.com/VincentBai-dotcom/AIT-Final-Project-API/blob/main/documentation/Interval.jpg?raw=true)
+![Interval training page wireframe](https://github.com/VincentBai-dotcom/AIT-Final-Project-API/blob/main/documentation/Interval.jpg?raw=true)
 
-/chord - identical to /interval expect the set of possible answers
+**/chord** - Identical to /interval except with chord-specific answer options
 
-/login - page for login and signup
+**/login** - Page for user login and signup
 
-![list](https://github.com/VincentBai-dotcom/AIT-Final-Project-API/blob/main/documentation/Login.jpg?raw=true)
+![Login page wireframe](https://github.com/VincentBai-dotcom/AIT-Final-Project-API/blob/main/documentation/Login.jpg?raw=true)
 
-/stats - page to show stats 
+**/stats** - Page to display user performance statistics
 
-![list](https://github.com/VincentBai-dotcom/AIT-Final-Project-API/blob/main/documentation/Stats.jpg?raw=true)
+![Stats page wireframe](https://github.com/VincentBai-dotcom/AIT-Final-Project-API/blob/main/documentation/Stats.jpg?raw=true)
 
-## Site map
+## Site Map
 
-/ - goes to /login, /chord, /interval, /stats
-
-/login - goes to /
-
-/interval - goes to /
-
-/chord - goes to /
-
-/stats - goes to /
+- **/** - Navigation hub linking to [/login](#wireframes), [/chord](#wireframes), [/interval](#wireframes), [/stats](#wireframes)
+- **/login** - Returns to [/](#wireframes)
+- **/interval** - Returns to [/](#wireframes)
+- **/chord** - Returns to [/](#wireframes)
+- **/stats** - Returns to [/](#wireframes)
 
 ## User Stories or Use Cases
 
-1. as non-registered user, I can register a new account with the site
-2. as a user, I can log in to the site
-3. as a user, I can pratice identifying chords and intervals by ear
-4. as a user, I can check the past stats of my accuracy on particular chord or interval
+1. As a non-registered user, I can register a new account with the site
+2. As a user, I can log in to the site
+3. As a user, I can practice identifying chords and intervals by ear
+4. As a user, I can check my past performance statistics for specific chords or intervals
 
 ## Research Topics
 
-* (3 points) Audio
-    * i need to find a efficient method to let my application make sound to implement the function
-    * found two candidates: Web Audio API and Tone.js
-* (6 points) REST API
-    * i will build a REST API using express as a stand-alone application that serves the backend
-    * some of the challenges include authentification. I will have the backend send a json web token to the frontend, and the frontend will include this token in the request header such that the backend can authenticate with.
-* (7 points) React
-    * used React as the frontend framework; it's a challenging library to learn, so I've assigned it 7 points
-    * since React is a library, not a framework, I will also learn other libraries nessacery for development, including React Router, Axios, Tailwind CSS, etc.
+* **(3 points) Audio**
+    * Need to find an efficient method to generate audio for the application
+    * Evaluated two candidates: Web Audio API and Tone.js
+* **(6 points) REST API**
+    * Built a REST API using Express as a stand-alone application that serves the backend
+    * Key challenges include authentication. The backend sends a JSON web token to the frontend, and the frontend includes this token in the request header for authentication.
+* **(7 points) React**
+    * Used React as the frontend framework; it's a challenging library to learn, so I've assigned it 7 points
+    * Since React is a library, not a framework, I also learned other libraries necessary for development, including React Router, Axios, Tailwind CSS, etc.
 
-## [Link to Initial Main Project File (Backend)](app.js) 
-## [Link to Initial Main Project File (Frontend)]([app.js](https://github.com/VincentBai-dotcom/AIT-Final-Project-Frontend/blob/master/src/App.js)) 
-## Annotations / References Used
+## Project Files
+
+- **[Backend Main File](./app.js)** - Express server and API setup
+- **[Frontend Main File](https://github.com/VincentBai-dotcom/AIT-Final-Project-Frontend/blob/master/src/App.js)** - React application entry point
+
+## References Used
 
 1. [React router docs](https://reactrouter.com/) 
 2. [React docs](https://reactjs.org/docs/getting-started.html) 
