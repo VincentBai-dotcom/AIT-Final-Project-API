@@ -11,7 +11,9 @@ module.exports = function(passport) {
   opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
   opts.secretOrKey = config.secret;
   passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
-    User.findOne({id: jwt_payload.id}, function(err, user) {
+    // jwt_payload contains the serialized user object. The MongoDB document
+    // identifier is stored in the `_id` field, not `id`.
+    User.findOne({_id: jwt_payload._id}, function(err, user) {
           if (err) {
               return done(err, false);
           }
